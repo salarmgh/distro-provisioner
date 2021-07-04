@@ -1,0 +1,110 @@
+---
+username: salarmgh
+proxy: http://user:pass@x.x.x.x:y
+repos:
+  - repo_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    repo_url: deb https://apt.kubernetes.io/ kubernetes-xenial main
+  - repo_key: https://repo.skype.com/data/SKYPE-GPG-KEY
+    repo_url: deb [arch=amd64] https://repo.skype.com/deb stable main
+firmware_pkgs:
+  - firmware-realtek
+  - firmware-sof-signed
+  - firmware-iwlwifi
+  - firmware-linux
+pkgs:
+  - gvfs-backends
+  - network-manager-openvpn-gnome
+  - network-manager-openconnect-gnome
+  - papirus-icon-theme
+  - fonts-hack
+  - fonts-open-sans
+  - openvpn
+  - kubectl
+  - ranger
+  - cmus
+  - rofi
+  - software-properties-common
+  - sysstat
+  - python3-pip
+  - dnsutils
+  - fd-find
+  - ripgrep
+  - tlp
+  - tlp-rdw
+  - zip
+  - htop
+  - cmake
+  - composer
+  - usbutils
+  - dosfstools
+  - jq
+  - iftop
+  - mariadb-client
+  - ufw
+  - wireshark-qt
+  - curl
+  - openconnect
+  - rsync
+  - pidgin
+  - libreoffice
+  - silversearcher-ag
+  - unrar-free
+  - xsel
+  - rfkill
+  - sudo
+  - git
+  - vim
+  - firefox-esr
+  - tmux
+  - xclip
+  - docker
+  - docker-compose
+  - vlc
+  - axel
+  - openfortivpn
+  - unzip
+dirs:
+  - /home/salarmgh/.local/share/xfce4/terminal/colorschemes
+  - /home/salarmgh/Downloads
+  - /home/salarmgh/Documents
+  - /home/salarmgh/Music
+  - /home/salarmgh/Pictures
+  - /home/salarmgh/Videos
+  - /home/salarmgh/Workspace
+  - /home/salarmgh/mnt
+  - /home/salarmgh/Workspace/tmp
+  - /home/salarmgh/.local/bin
+  - /home/salarmgh/.local/opt
+  - /home/salarmgh/.local/src
+  - /home/salarmgh/.local/share/applications
+  - /home/salarmgh/.kube
+  - /home/salarmgh/.vim/autoload
+  - /home/salarmgh/.ssh
+bash_custom_config: |
+  export PS1="\W \\$ \[$(tput sgr0)\]"
+  alias xclip='xclip -selection "clipboard"'
+user_groups:
+  - docker
+is_hidpi: false
+copy_files:
+  - src: nord.theme
+    dest: /home/salarmgh/.local/share/xfce4/terminal/colorschemes/nord.theme
+    perm: "0644"
+  - src: tmux.conf
+    dest: /home/salarmgh/.tmux.conf
+    perm: "0644"
+  - src: vimrc
+    dest: /home/salarmgh/.vimrc
+    perm: "0644"
+  - src: id_rsa
+    dest: /home/salarmgh/.ssh/id_rsa
+    perm: "0400"
+  - src: id_rsa.pub
+    dest: /home/salarmgh/.ssh/id_rsa.pub
+    perm: "0400"
+  - src: kubeconfig
+    dest: /home/salarmgh/.kube/config
+    perm: "0600"
+  - src: dir_colors
+    dest: /home/salarmgh/.dir_colors
+    perm: "0644"

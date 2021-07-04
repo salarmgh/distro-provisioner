@@ -1,0 +1,128 @@
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'dense-analysis/ale'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'tpope/vim-fugitive'
+call plug#end()
+
+" Set Colorscheme
+syntax on
+silent! colorscheme nord
+set background=dark
+" Enable wild menu
+set wildmenu
+" No line numbers
+set nu
+
+" Highlight search matches
+set hlsearch
+" Enable incremental searching
+set incsearch
+" Ignore case when searching
+set ignorecase
+" Override the 'ignorecase' option if the search pattern contains upper case characters.
+set smartcase
+
+" Make a tab equal to 4 spaces
+set tabstop=4
+set shiftwidth=4
+
+" Enable smart tabs
+set smarttab
+" Use spaces instead of tabs
+set expandtab
+
+" Copy the indentation from the current line.
+set autoindent
+" Enable smart autoindenting.
+set smartindent
+" Enable loading the plugin files for specific file types
+filetype plugin indent on
+
+" Show a few lines of context around the cursor
+set scrolloff=5
+
+" Show the line and column number of the cursor position
+set ruler
+" Display the incomplete commands in the bottom right-hand side of your screen.  
+set showcmd
+
+" Don't line wrap mid-word.
+set lbr
+
+" Open new split panes
+set splitright
+set splitbelow
+
+" Allow modification hidden buffers
+set hidden
+
+" Disable exrc
+set secure
+set nomodeline
+
+" Show cursor position
+"set cursorline
+
+" Show the matching part of the pair for [] {} and ()
+set showmatch
+
+" Correct typos
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
+
+" Remove highlight for search
+map <C-i> :nohl<CR>
+
+" Change the mapleader from \ to space
+nnoremap <Space> <nop>
+let mapleader=' '
+
+" Set indentation
+augroup indentation
+    autocmd!
+    autocmd Filetype html*      setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype yaml       setlocal tabstop=2 shiftwidth=2
+augroup END
+
+" Ctrlp
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_open_multiple_files = 'i'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:100'
+nnoremap <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_user_command = {
+\ 'types': {
+  \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard'],
+  \ },
+\ 'fallback': 'find %s -type f',
+\ }
+let g:ctrlp_use_caching = 0
+if executable('ag')
+  let g:ctrlp_user_command['fallback'] = 'ag %s -l --nocolor -g ""'
+endif
+
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+
+"let g:rainbow_active = 1

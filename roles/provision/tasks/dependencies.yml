@@ -1,0 +1,97 @@
+---
+- name: apt proxy configuration
+  copy:
+    dest: /etc/apt/apt.conf.d/00proxy
+    content: |
+      Acquire::http::Proxy "{{ proxy }}";
+      Acquire::https::Proxy "{{ proxy }}";
+  become: true
+
+- name: Add repo keys
+  apt_key:
+    url: "{{ item.repo_key }}"
+    state: present
+  with_items: "{{ repos }}"
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  become: true
+
+- name: add repos
+  apt_repository:
+    repo: "{{ item.repo_url }}"
+    state: present
+  with_items: "{{ repos }}"
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  become: true
+
+- name: Install firmwares
+  apt:
+    name: "{{ firmware_pkgs }}"
+    state: present
+  become: true
+
+- name: Install dependencies
+  apt:
+    name: "{{ pkgs }}"
+    state: present
+  become: true
+
+- name: Check if xournalpp is installed
+  command: dpkg-query -W xournalpp
+  register: xournalpp_check_deb
+  failed_when: xournalpp_check_deb.rc > 1
+  changed_when: xournalpp_check_deb.rc == 1
+
+- name: Download xournalpp
+  get_url:
+    url="https://github.com/xournalpp/xournalpp/releases/download/1.0.20-hotfix/xournalpp-1.0.20-hotfix-hotfix-Debian-buster-x86_64.deb"
+    dest="/tmp/xournalpp.deb"
+  when: xournalpp_check_deb.rc == 1
+
+- name: Install xournalpp
+  apt: deb="/tmp/xournalpp.deb"
+  when: xournalpp_check_deb.rc == 1
+  become: true
+
+- name: Check if skype is installed
+  command: dpkg-query -W skypeforlinux
+  register: skype_check_deb
+  failed_when: skype_check_deb.rc > 1
+  changed_when: skype_check_deb.rc == 1
+
+- name: Download skype
+  get_url:
+    url="https://repo.skype.com/latest/skypeforlinux-64.deb"
+    dest="/tmp/skype.deb"
+  when: skype_check_deb.rc == 1
+
+- name: Install skype
+  apt: deb="/tmp/skype.deb"
+  when: skype_check_deb.rc == 1
+  become: true
+
+- name: Check if helm is installed
+  stat:
+    path: /home/salarmgh/.local/bin/helm
+  register: helm_installed
+
+- name: Download helm
+  get_url:
+    url="https://get.helm.sh/helm-v3.6.2-linux-amd64.tar.gz"
+    dest="/tmp/helm.tar.gz"
+  when: not helm_installed.stat.exists
+
+- name: Install helm
+  unarchive:
+    src: '/tmp/helm.tar.gz'
+    dest: /tmp
+  when: not helm_installed.stat.exists
+
+- name: Move helm binary
+  command: mv /tmp/linux-amd64/helm helm
+  args:
+    chdir: /home/salarmgh/.local/bin
+  when: not helm_installed.stat.exists
