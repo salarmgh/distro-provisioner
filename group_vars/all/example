@@ -16,6 +16,7 @@ pkgs:
   - network-manager-openvpn-gnome
   - network-manager-openconnect-gnome
   - papirus-icon-theme
+  - arc-theme
   - fonts-hack
   - fonts-open-sans
   - openvpn
