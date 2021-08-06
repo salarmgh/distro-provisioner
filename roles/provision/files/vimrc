@@ -10,12 +10,19 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'posva/vim-vue'
+Plug 'alvan/vim-closetag'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'branch': 'release/0.x'
+  \ }
 call plug#end()
 
 " Set Colorscheme
 syntax on
 silent! colorscheme nord
 set background=dark
+hi Visual term=reverse cterm=reverse guibg=Grey
 " Enable wild menu
 set wildmenu
 " No line numbers
@@ -91,6 +98,7 @@ let mapleader=' '
 augroup indentation
     autocmd!
     autocmd Filetype html*      setlocal tabstop=2 shiftwidth=2
+    autocmd Filetype vue*      setlocal tabstop=2 shiftwidth=2
     autocmd Filetype yaml       setlocal tabstop=2 shiftwidth=2
 augroup END
 
@@ -126,3 +134,22 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 
 "let g:rainbow_active = 1
+
+let g:closetag_filenames = '*.html,*.xhtml,*.htm,*.vue'
+
+inoremap <expr> <CR> InsertMapForEnter()
+function! InsertMapForEnter()
+    if pumvisible()
+        return "\<C-y>"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
+        return "\<CR>\<Esc>O"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
+        return "\<CR>\<Esc>O"
+    else
+        return "\<CR>"
+    endif
+endfunction
+
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 0
+let g:prettier#autoformat = 1

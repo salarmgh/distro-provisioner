@@ -1,3 +1,3 @@
 roles/provision/files/id_rsa*
 roles/provision/files/kubeconfig
-group_vars/all/all.yaml
+group_vars/all/secret*

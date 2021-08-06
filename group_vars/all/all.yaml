@@ -1,46 +1,39 @@
 ---
 username: salarmgh
-proxy: http://user:pass@x.x.x.x:y
-repos:
-  - repo_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    repo_url: deb https://apt.kubernetes.io/ kubernetes-xenial main
-  - repo_key: https://repo.skype.com/data/SKYPE-GPG-KEY
-    repo_url: deb [arch=amd64] https://repo.skype.com/deb stable main
-firmware_pkgs:
-  - firmware-realtek
-  - firmware-sof-signed
-  - firmware-iwlwifi
-  - firmware-linux
+aur:
+  - skypeforlinux-stable-bin
 pkgs:
-  - gvfs-backends
-  - network-manager-openvpn-gnome
-  - network-manager-openconnect-gnome
-  - papirus-icon-theme
-  - arc-theme
-  - fonts-hack
-  - fonts-open-sans
+  - nodejs
+  - npm
+  - ttf-lato
+  - rhythmbox
+  - geary
+  - ttf-dejavu
+  - helm
+  - xournalpp
+  - networkmanager-openvpn
+  - networkmanager-openconnect
+  - ttf-hack
+  - ttf-opensans
   - openvpn
   - kubectl
   - ranger
   - cmus
   - rofi
-  - software-properties-common
   - sysstat
-  - python3-pip
   - dnsutils
-  - fd-find
+  - fd
   - ripgrep
   - tlp
   - tlp-rdw
   - zip
   - htop
   - cmake
-  - composer
   - usbutils
   - dosfstools
   - jq
   - iftop
-  - mariadb-client
+  - mariadb-clients
   - ufw
   - wireshark-qt
   - curl
@@ -48,24 +41,22 @@ pkgs:
   - rsync
   - pidgin
   - libreoffice
-  - silversearcher-ag
-  - unrar-free
+  - the_silver_searcher
+  - unrar
   - xsel
   - rfkill
   - sudo
   - git
   - vim
-  - firefox-esr
+  - firefox
   - tmux
   - xclip
   - docker
   - docker-compose
   - vlc
   - axel
-  - openfortivpn
   - unzip
 dirs:
-  - /home/salarmgh/.local/share/xfce4/terminal/colorschemes
   - /home/salarmgh/Downloads
   - /home/salarmgh/Documents
   - /home/salarmgh/Music
@@ -81,16 +72,11 @@ dirs:
   - /home/salarmgh/.kube
   - /home/salarmgh/.vim/autoload
   - /home/salarmgh/.ssh
-bash_custom_config: |
-  export PS1="\W \\$ \[$(tput sgr0)\]"
-  alias xclip='xclip -selection "clipboard"'
 user_groups:
   - docker
+  - storage
 is_hidpi: false
 copy_files:
-  - src: nord.theme
-    dest: /home/salarmgh/.local/share/xfce4/terminal/colorschemes/nord.theme
-    perm: "0644"
   - src: tmux.conf
     dest: /home/salarmgh/.tmux.conf
     perm: "0644"
