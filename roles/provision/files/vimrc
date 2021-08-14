@@ -3,18 +3,22 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'posva/vim-vue'
 Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-commentary'
+
+Plug 'tell-k/vim-autopep8'
+
+Plug 'pangloss/vim-javascript'
+"Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'branch': 'release/0.x'
+  \ 'do': 'npm install'
   \ }
 call plug#end()
 
@@ -40,6 +44,7 @@ set smartcase
 " Make a tab equal to 4 spaces
 set tabstop=4
 set shiftwidth=4
+set textwidth=79
 
 " Enable smart tabs
 set smarttab
@@ -95,12 +100,15 @@ nnoremap <Space> <nop>
 let mapleader=' '
 
 " Set indentation
-augroup indentation
-    autocmd!
-    autocmd Filetype html*      setlocal tabstop=2 shiftwidth=2
-    autocmd Filetype vue*      setlocal tabstop=2 shiftwidth=2
-    autocmd Filetype yaml       setlocal tabstop=2 shiftwidth=2
+autocmd Filetype html      setlocal tabstop=2 shiftwidth=2
+autocmd Filetype javascript      setlocal tabstop=2 shiftwidth=2
+autocmd Filetype vue      setlocal tabstop=2 shiftwidth=2
+autocmd Filetype yaml       setlocal tabstop=2 shiftwidth=2
+
+augroup vimrc
+  autocmd!
 augroup END
+
 
 " Ctrlp
 let g:ctrlp_cmd = 'CtrlP'
@@ -137,19 +145,22 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:closetag_filenames = '*.html,*.xhtml,*.htm,*.vue'
 
-inoremap <expr> <CR> InsertMapForEnter()
-function! InsertMapForEnter()
-    if pumvisible()
-        return "\<C-y>"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
-        return "\<CR>\<Esc>O"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
-        return "\<CR>\<Esc>O"
-    else
-        return "\<CR>"
-    endif
-endfunction
+"inoremap <expr> <CR> InsertMapForEnter()
+"function! InsertMapForEnter()
+"    if pumvisible()
+"        return "\<C-y>"
+"    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
+"        return "\<CR>\<Esc>O"
+"    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
+"        return "\<CR>\<Esc>O"
+"    else
+"        return "\<CR>"
+"    endif
+"endfunction
 
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#autoformat_config_present = 0
 let g:prettier#autoformat = 1
+
+let g:autopep8_disable_show_diff=1
+let g:autopep8_on_save = 1
