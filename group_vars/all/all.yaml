@@ -3,6 +3,10 @@ username: salarmgh
 aur:
   - skypeforlinux-stable-bin
 pkgs:
+  - pycharm-community-edition
+  - sof-firmware
+  - arc-gtk-theme
+  - papirus-icon-theme
   - nodejs
   - npm
   - ttf-lato

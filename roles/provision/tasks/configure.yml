@@ -47,3 +47,10 @@
     line: QT_SCALE_FACTOR=2
   become: true
   when: is_hidpi
+
+- name: Fix gnome workspaces
+  command: gsettings set org.gnome.shell.app-switcher current-workspace-only true
+
+- name: Set timezone to Asia/Tehran
+  timezone:
+    name: Asia/Tehran

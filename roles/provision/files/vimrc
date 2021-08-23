@@ -11,11 +11,13 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-commentary'
+Plug 'elixir-lang/vim-elixir'
 
 Plug 'tell-k/vim-autopep8'
 
 Plug 'pangloss/vim-javascript'
-"Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-endwise'
+Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install'
@@ -102,6 +104,8 @@ let mapleader=' '
 " Set indentation
 autocmd Filetype html      setlocal tabstop=2 shiftwidth=2
 autocmd Filetype javascript      setlocal tabstop=2 shiftwidth=2
+autocmd Filetype typescript      setlocal tabstop=2 shiftwidth=2
+autocmd Filetype typescriptreact      setlocal tabstop=2 shiftwidth=2
 autocmd Filetype vue      setlocal tabstop=2 shiftwidth=2
 autocmd Filetype yaml       setlocal tabstop=2 shiftwidth=2
 
