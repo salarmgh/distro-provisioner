@@ -3,30 +3,19 @@ username: salarmgh
 aur:
   - skypeforlinux-stable-bin
 pkgs:
-  - pycharm-community-edition
-  - sof-firmware
-  - arc-gtk-theme
-  - papirus-icon-theme
-  - nodejs
-  - npm
-  - ttf-lato
   - rhythmbox
   - geary
   - ttf-dejavu
-  - helm
-  - xournalpp
-  - networkmanager-openvpn
-  - networkmanager-openconnect
-  - ttf-hack
-  - ttf-opensans
+  - network-manager-openvpn-gnome
+  - network-manager-openconnect-gnome
+  - fonts-open-sans
   - openvpn
-  - kubectl
   - ranger
   - cmus
   - rofi
   - sysstat
   - dnsutils
-  - fd
+  - fd-find
   - ripgrep
   - tlp
   - tlp-rdw
@@ -37,15 +26,13 @@ pkgs:
   - dosfstools
   - jq
   - iftop
-  - mariadb-clients
+  - mariadb-client
   - ufw
-  - wireshark-qt
   - curl
   - openconnect
   - rsync
-  - pidgin
   - libreoffice
-  - the_silver_searcher
+  - silversearcher-ag
   - unrar
   - xsel
   - rfkill
@@ -78,7 +65,6 @@ dirs:
   - /home/salarmgh/.ssh
 user_groups:
   - docker
-  - storage
 is_hidpi: false
 copy_files:
   - src: tmux.conf
