@@ -5,6 +5,10 @@ firmware_pkgs:
   - firmware-iwlwifi
   - firmware-linux
 pkgs:
+  - erlang-dev
+  - elixir
+  - nodejs
+  - npm
   - arc-theme
   - papirus-icon-theme
   - lxappearance
