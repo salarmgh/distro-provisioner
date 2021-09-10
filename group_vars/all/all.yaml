@@ -1,18 +1,33 @@
 ---
 username: salarmgh
-aur:
-  - skypeforlinux-stable-bin
+firmware_pkgs:
+  - firmware-realtek
+  - firmware-iwlwifi
+  - firmware-linux
 pkgs:
-  - rhythmbox
+  - arc-theme
+  - papirus-icon-theme
+  - lxappearance
+  - fonts-font-awesome
+  - xinit
+  - i3
+  - i3lock
+  - dunst
+  - compton
+  - xbacklight
+  - xss-lock
+  - rxvt-unicode
+  - pavucontrol
+  - gvfs-backends
+  - python3-pip
   - geary
-  - ttf-dejavu
+  - fonts-dejavu
   - network-manager-openvpn-gnome
   - network-manager-openconnect-gnome
+  - network-manager-gnome
   - fonts-open-sans
-  - openvpn
   - ranger
   - cmus
-  - rofi
   - sysstat
   - dnsutils
   - fd-find
@@ -27,19 +42,16 @@ pkgs:
   - jq
   - iftop
   - mariadb-client
-  - ufw
   - curl
   - openconnect
-  - rsync
   - libreoffice
   - silversearcher-ag
   - unrar
   - xsel
-  - rfkill
   - sudo
   - git
   - vim
-  - firefox
+  - firefox-esr
   - tmux
   - xclip
   - docker
@@ -60,6 +72,7 @@ dirs:
   - /home/salarmgh/.local/opt
   - /home/salarmgh/.local/src
   - /home/salarmgh/.local/share/applications
+  - /home/salarmgh/.local/share/fonts
   - /home/salarmgh/.kube
   - /home/salarmgh/.vim/autoload
   - /home/salarmgh/.ssh
