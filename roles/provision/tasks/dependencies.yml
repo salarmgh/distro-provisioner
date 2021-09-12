@@ -47,3 +47,9 @@
     name: "{{ firmware_pkgs }}"
     state: present
   become: true
+
+- name: Install npm packages
+  npm:
+    name: "{{ npm_packages }}"
+    global: yes
+  become: true
