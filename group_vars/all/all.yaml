@@ -12,6 +12,7 @@ firmware_pkgs:
   - firmware-iwlwifi
   - firmware-linux
 pkgs:
+  - arandr
   - apt-transport-https
   - skypeforlinux
   - kubectl
