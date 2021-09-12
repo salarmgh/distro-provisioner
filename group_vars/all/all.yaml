@@ -1,10 +1,21 @@
 ---
 username: salarmgh
+repos:
+  - repo_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    repo_url: deb https://apt.kubernetes.io/ kubernetes-xenial main
+  - repo_key: https://repo.skype.com/data/SKYPE-GPG-KEY
+    repo_url: deb [arch=amd64] https://repo.skype.com/deb stable main
+  - repo_key: https://baltocdn.com/helm/signing.asc
+    repo_url: deb https://baltocdn.com/helm/stable/debian/ all main
 firmware_pkgs:
   - firmware-realtek
   - firmware-iwlwifi
   - firmware-linux
 pkgs:
+  - apt-transport-https
+  - skypeforlinux
+  - kubectl
+  - helm
   - erlang-dev
   - elixir
   - nodejs
