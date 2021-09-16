@@ -3,9 +3,9 @@ username: salarmgh
 aur:
   - skypeforlinux-stable-bin
 pkgs:
-  - rhythmbox
+  #- rhythmbox
   - geary
-  - ttf-dejavu
+  - fonts-dejavu
   - network-manager-openvpn-gnome
   - network-manager-openconnect-gnome
   - fonts-open-sans
@@ -39,7 +39,7 @@ pkgs:
   - sudo
   - git
   - vim
-  - firefox
+  - firefox-esr
   - tmux
   - xclip
   - docker
@@ -63,10 +63,14 @@ dirs:
   - /home/salarmgh/.kube
   - /home/salarmgh/.vim/autoload
   - /home/salarmgh/.ssh
+  - /home/salarmgh/.local/share/xfce4/terminal/colorschemes
 user_groups:
   - docker
 is_hidpi: false
 copy_files:
+  - src: nord.theme
+    dest: /home/salarmgh/.local/share/xfce4/terminal/colorschemes
+    perm: "0644"
   - src: tmux.conf
     dest: /home/salarmgh/.tmux.conf
     perm: "0644"
