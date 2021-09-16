@@ -1,13 +1,4 @@
 ---
-- name: Create directories
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: salarmgh
-    group: salarmgh
-    mode: '0755'
-  with_items: "{{ dirs }}"
-
 - name: Copy configs
   copy:
     src: "{{ item.src }}"

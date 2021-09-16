@@ -1,6 +1,55 @@
 ---
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: salarmgh
+    group: salarmgh
+    mode: "0755"
+  with_items: "{{ dirs }}"
+
+- name: apt proxy configuration
+  copy:
+    dest: /etc/apt/apt.conf.d/00proxy
+    content: |
+      Acquire::http::Proxy "{{ proxy }}";
+      Acquire::https::Proxy "{{ proxy }}";
+  become: true
+
+- name: Add repo keys
+  apt_key:
+    url: "{{ item.repo_key }}"
+    state: present
+  with_items: "{{ repos }}"
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  become: true
+
+- name: add repos
+  apt_repository:
+    repo: "{{ item.repo_url }}"
+    state: present
+  with_items: "{{ repos }}"
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  become: true
+
 - name: Install dependencies
   apt:
     name: "{{ pkgs }}"
     state: present
+  become: true
+
+- name: Install firmwares
+  apt:
+    name: "{{ firmware_pkgs }}"
+    state: present
+  become: true
+
+- name: Install npm packages
+  npm:
+    name: "{{ npm_packages }}"
+    global: yes
   become: true

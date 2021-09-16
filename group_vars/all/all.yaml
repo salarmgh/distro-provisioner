@@ -1,18 +1,49 @@
 ---
 username: salarmgh
-aur:
-  - skypeforlinux-stable-bin
+repos:
+  - repo_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    repo_url: deb https://apt.kubernetes.io/ kubernetes-xenial main
+  - repo_key: https://repo.skype.com/data/SKYPE-GPG-KEY
+    repo_url: deb [arch=amd64] https://repo.skype.com/deb stable main
+  - repo_key: https://baltocdn.com/helm/signing.asc
+    repo_url: deb https://baltocdn.com/helm/stable/debian/ all main
+firmware_pkgs:
+  - firmware-realtek
+  - firmware-iwlwifi
+  - firmware-linux
 pkgs:
-  #- rhythmbox
-  - geary
+  - arandr
+  - apt-transport-https
+  - skypeforlinux
+  - kubectl
+  - helm
+  - erlang-dev
+  - elixir
+  - nodejs
+  - npm
+  - arc-theme
+  - papirus-icon-theme
+  - lxappearance
+  - fonts-font-awesome
+  - xinit
+  - i3
+  - i3lock
+  - dunst
+  - compton
+  - xbacklight
+  - xss-lock
+  - rxvt-unicode
+  - pavucontrol
+  - gvfs-backends
+  - python3-pip
+  - evolution
   - fonts-dejavu
   - network-manager-openvpn-gnome
   - network-manager-openconnect-gnome
+  - network-manager-gnome
   - fonts-open-sans
-  - openvpn
   - ranger
   - cmus
-  - rofi
   - sysstat
   - dnsutils
   - fd-find
@@ -27,15 +58,12 @@ pkgs:
   - jq
   - iftop
   - mariadb-client
-  - ufw
   - curl
   - openconnect
-  - rsync
   - libreoffice
   - silversearcher-ag
   - unrar
   - xsel
-  - rfkill
   - sudo
   - git
   - vim
@@ -47,6 +75,8 @@ pkgs:
   - vlc
   - axel
   - unzip
+npm_packages:
+  - prettier
 dirs:
   - /home/salarmgh/Downloads
   - /home/salarmgh/Documents
@@ -60,6 +90,7 @@ dirs:
   - /home/salarmgh/.local/opt
   - /home/salarmgh/.local/src
   - /home/salarmgh/.local/share/applications
+  - /home/salarmgh/.local/share/fonts
   - /home/salarmgh/.kube
   - /home/salarmgh/.vim/autoload
   - /home/salarmgh/.ssh
