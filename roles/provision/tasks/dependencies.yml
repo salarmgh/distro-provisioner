@@ -36,6 +36,16 @@
     https_proxy: "{{ proxy }}"
   become: true
 
+- name: add repos
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items: "{{ ppas }}"
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  become: true
+
 - name: Install dependencies
   apt:
     name: "{{ pkgs }}"
@@ -48,8 +58,15 @@
     state: present
   become: true
 
+- name: Install flatpak packages
+  flatpak:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ flatpak_pkgs }}"
+
 - name: Install npm packages
   npm:
-    name: "{{ npm_packages }}"
+    name: "{{ item }}"
     global: yes
+  with_items: "{{ npm_packages }}"
   become: true
