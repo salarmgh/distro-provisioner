@@ -37,3 +37,16 @@
     name: Asia/Tehran
   become: true
 
+- name: Enable NetworkManager
+  systemd:
+    name: NetworkManager
+    state: started
+    enabled: yes
+  become: true
+
+- name: Enable docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: true

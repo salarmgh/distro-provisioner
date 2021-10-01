@@ -1,10 +1,17 @@
 ---
 username: salarmgh
 pkgs:
+  #- oh-my-zsh
+  #- maia-icon-theme
+  #- xcursor-maia-git
+  #- maia-gtk-theme
   #- clipit
   #- i3-scrot
   #- nerd-fonts-roboto-mono
   #- skypeforlinux
+  - xorg-xkill
+  - cmus
+  - zsh
   - arandr
   - base-devel
   - xautolock
@@ -124,4 +131,7 @@ copy_files:
     perm: "0644"
   - src: gtkrc-3.0.ini
     dest: /home/salarmgh/.config/gtk-3.0
+    perm: "0644"
+  - src: zshrc
+    dest: /home/salarmgh/.zshrc
     perm: "0644"
