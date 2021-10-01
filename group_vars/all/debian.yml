@@ -1,0 +1,15 @@
+repos:
+  - repo_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    repo_url: deb https://apt.kubernetes.io/ kubernetes-xenial main
+  - repo_key: https://repo.skype.com/data/SKYPE-GPG-KEY
+    repo_url: deb [arch=amd64] https://repo.skype.com/deb stable main
+  - repo_key: https://baltocdn.com/helm/signing.asc
+    repo_url: deb https://baltocdn.com/helm/stable/debian/ all main
+  - repo_key: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    repo_url: deb https://deb.nodesource.com/node_14.x focal main
+ppas:
+  - ppa:agornostal/ulauncher
+firmware_pkgs: []
+# - firmware-realtek
+# - firmware-iwlwifi
+# - firmware-linux

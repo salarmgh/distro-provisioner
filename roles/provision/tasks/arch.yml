@@ -1,43 +1,18 @@
 ---
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: salarmgh
+    group: salarmgh
+    mode: "0755"
+  with_items: "{{ dirs }}"
+
 - name: Install dependencies
   pacman:
     name: "{{ pkgs }}"
     state: present
   become: true
-
-- name: Check if chrome-gnome-shell is installed
-  stat:
-    path: /usr/lib/mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json
-  register: chrome_gnome_shell_installed
-
-- name: Clone chrome-gnome-shell
-  git:
-    repo: https://gitlab.gnome.org/GNOME/chrome-gnome-shell.git
-    dest: /tmp/chrome-gnome-shell
-    update: no
-  when: not chrome_gnome_shell_installed.stat.exists
-
-- name: Create build directory for chrome-gnome-shell
-  file:
-    path: /tmp/chrome-gnome-shell/build
-    state: directory
-    owner: salarmgh
-    group: salarmgh
-    mode: '0755'
-  when: not chrome_gnome_shell_installed.stat.exists
-
-- name: Build chrome-gnome-shell
-  command: cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_EXTENSION=OFF ../
-  args:
-    chdir: /tmp/chrome-gnome-shell/build
-  when: not chrome_gnome_shell_installed.stat.exists
-
-- name: Install chrome-gnome-shell
-  command: make install
-  become: true
-  args:
-    chdir: /tmp/chrome-gnome-shell/build
-  when: not chrome_gnome_shell_installed.stat.exists
 
 - name: create user for aur
   user:
@@ -49,22 +24,21 @@
 - name: NOPASSWD for aur
   lineinfile:
     path: /etc/sudoers.d/11-install-aur_builder
-    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     create: yes
-    validate: 'visudo -cf %s'
+    validate: "visudo -cf %s"
   become: true
 
-- name: install yay
-  aur: 
-    name: yay
-    use: makepkg
-    state: present
-  become: yes
-  become_user: aur_builder
-
 - name: install aur packages
-  aur: 
+  aur:
     name: "{{ aur }}"
     state: present
   become: yes
   become_user: aur_builder
+
+- name: Install npm packages
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items: "{{ npm_packages }}"
+  become: true

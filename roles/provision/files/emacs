@@ -79,7 +79,7 @@ If the new path's directories does not exist, create them."
 (setq auto-save-default nil)
 
 ;; Ansi-term
-(setq explicit-shell-file-name "/usr/bin/tmux")
+(setq explicit-shell-file-name "/usr/bin/bash")
 (define-key global-map (kbd "C-x t") (lambda () (interactive) (term explicit-shell-file-name)))
 
 ;; VIM!!!
@@ -181,6 +181,9 @@ If the new path's directories does not exist, create them."
 (use-package all-the-icons
   :ensure t)
 
+(use-package ag
+  :ensure t)
+
 (use-package neotree
   :ensure t)
 (global-set-key (kbd "C-c m") 'make-directory)
@@ -243,6 +246,7 @@ If the new path's directories does not exist, create them."
 (use-package ag)
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-switch-project)
+(define-key projectile-mode-map (kbd "C-c o") 'projectile-switch-open-project)
 (define-key projectile-mode-map (kbd "C-c b") 'projectile-switch-to-buffer)
 (define-key projectile-mode-map (kbd "C-c f") 'projectile-find-file)
 (define-key projectile-mode-map (kbd "C-c w") 'projectile-kill-buffers)
@@ -280,7 +284,7 @@ If the new path's directories does not exist, create them."
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Roboto Mono"
-                    :height 140
+                    :height 130
                     :weight 'normal
                     :width 'normal)
 (custom-set-variables
@@ -288,9 +292,11 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(nord))
+ '(custom-safe-themes
+   '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
  '(package-selected-packages
-   (quote
-    (all-the-icons use-package undo-tree swiper projectile nord-theme neotree magit ido-vertical-mode go-mode format-all flycheck dot-mode dockerfile-mode docker-compose-mode alchemist ag acme-theme))))
+   '(all-the-icons use-package undo-tree swiper projectile nord-theme neotree magit ido-vertical-mode go-mode format-all flycheck dot-mode dockerfile-mode docker-compose-mode alchemist ag acme-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

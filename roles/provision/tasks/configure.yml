@@ -36,11 +36,5 @@
   timezone:
     name: Asia/Tehran
 
-- name: On-Screen keyboard height
-  command: gsettings set org.onboard.window.landscape dock-height 405
-
-- name: Disable terminal tabs
-  command: gsettings set io.elementary.terminal.settings tab-bar-behavior 'Hide When Single Tab'
-
-- name: Terminal font size
-  command: gsettings set io.elementary.terminal.settings font 'Roboto Mono 13'
+- name: Group windows by workspace
+  command: gsettings set org.gnome.shell.app-switcher current-workspace-only true

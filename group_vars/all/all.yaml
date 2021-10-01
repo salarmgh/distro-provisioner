@@ -1,48 +1,26 @@
 ---
 username: salarmgh
-repos:
-  - repo_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    repo_url: deb https://apt.kubernetes.io/ kubernetes-xenial main
-  - repo_key: https://repo.skype.com/data/SKYPE-GPG-KEY
-    repo_url: deb [arch=amd64] https://repo.skype.com/deb stable main
-  - repo_key: https://baltocdn.com/helm/signing.asc
-    repo_url: deb https://baltocdn.com/helm/stable/debian/ all main
-  - repo_key: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    repo_url: deb https://deb.nodesource.com/node_14.x focal main
-ppas:
-  - ppa:agornostal/ulauncher
-firmware_pkgs: []
-# - firmware-realtek
-# - firmware-iwlwifi
-# - firmware-linux
 pkgs:
+  - nerd-fonts-roboto-mono
+  - inter-font
   - wmctrl
-  - ulauncher
+    #- ulauncher
   - emacs
-  - software-properties-common
-  - arandr
-  - apt-transport-https
-  - skypeforlinux
+    #- skypeforlinux
   - kubectl
   - helm
-  - erlang-dev
   - elixir
   - nodejs
-  - fonts-font-awesome
-    #- xinit
-    #- rxvt-unicode
+  - npm
   - pavucontrol
-  - gvfs-backends
-  - python3-pip
-    #- evolution
-  - fonts-dejavu
-  - network-manager-openvpn-gnome
-  - network-manager-openconnect-gnome
-  - network-manager-gnome
-  - fonts-open-sans
+  - networkmanager-openvpn
+  - networkmanager-openconnect
+  - ttf-opensans
+  - ttf-dejavu
+  - xournalpp
   - sysstat
   - dnsutils
-  - fd-find
+  - fd
   - ripgrep
   - tlp
   - tlp-rdw
@@ -53,11 +31,11 @@ pkgs:
   - dosfstools
   - jq
   - iftop
-  - mariadb-client
+  - mariadb-clients
   - curl
   - openconnect
   - libreoffice
-  - silversearcher-ag
+  - the_silver_searcher
   - unrar
   - xsel
   - sudo
@@ -71,8 +49,6 @@ pkgs:
   - vlc
   - axel
   - unzip
-flatpak_pkgs:
-  - https://dl.flathub.org/repo/appstream/com.slack.Slack.flatpakref
 npm_packages:
   - prettier
 dirs:
@@ -86,7 +62,7 @@ dirs:
   - /home/salarmgh/.ssh
 user_groups:
   - docker
-is_hidpi: false
+is_hidpi: true
 copy_files:
   - src: tmux.conf
     dest: /home/salarmgh/.tmux.conf
