@@ -35,6 +35,5 @@
 - name: Set timezone to Asia/Tehran
   timezone:
     name: Asia/Tehran
+  become: true
 
-- name: Group windows by workspace
-  command: gsettings set org.gnome.shell.app-switcher current-workspace-only true

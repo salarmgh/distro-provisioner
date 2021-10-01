@@ -14,28 +14,6 @@
     state: present
   become: true
 
-- name: create user for aur
-  user:
-    name: aur_builder
-    create_home: yes
-    group: wheel
-  become: true
-
-- name: NOPASSWD for aur
-  lineinfile:
-    path: /etc/sudoers.d/11-install-aur_builder
-    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
-    create: yes
-    validate: "visudo -cf %s"
-  become: true
-
-- name: install aur packages
-  aur:
-    name: "{{ aur }}"
-    state: present
-  become: yes
-  become_user: aur_builder
-
 - name: Install npm packages
   npm:
     name: "{{ item }}"
