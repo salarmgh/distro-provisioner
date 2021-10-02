@@ -50,3 +50,18 @@
     state: started
     enabled: yes
   become: true
+
+- name: Enable bluetooth
+  systemd:
+    name: bluetooth
+    state: started
+    enabled: yes
+  become: true
+
+- name: Configure libinput
+  copy:
+    src: 40-libinput.conf
+    dest: /etc/X11/xorg.conf.d/40-libinput.conf
+    owner: root
+    group: root
+  become: true

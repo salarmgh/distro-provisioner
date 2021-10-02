@@ -9,6 +9,9 @@ pkgs:
   #- i3-scrot
   #- nerd-fonts-roboto-mono
   #- skypeforlinux
+  - slack-desktop
+  - sof-firmware
+  - whois
   - xorg-xkill
   - cmus
   - zsh
@@ -20,7 +23,7 @@ pkgs:
   - network-manager-applet
   - xorg-xbacklight
   - nitrogen
-  - compton
+  - picom
   - dunst
   - rxvt-unicode
   - inter-font
@@ -80,6 +83,7 @@ dirs:
   - /home/salarmgh/.config/dunst
   - /home/salarmgh/.config/nitrogen
   - /home/salarmgh/.config/gtk-3.0
+  - /home/salarmgh/.config/picom
 user_groups:
   - docker
 is_hidpi: true
@@ -134,4 +138,7 @@ copy_files:
     perm: "0644"
   - src: zshrc
     dest: /home/salarmgh/.zshrc
+    perm: "0644"
+  - src: picom.conf
+    dest: /home/salarmgh/.config/picom/picom.conf
     perm: "0644"
