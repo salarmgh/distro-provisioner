@@ -10,6 +10,8 @@ pkgs:
   #- nerd-fonts-roboto-mono
   #- skypeforlinux
   - slack-desktop
+  - evolution
+  - evolution-ews
   - sof-firmware
   - whois
   - xorg-xkill
