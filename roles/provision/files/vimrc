@@ -19,6 +19,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-endwise'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'hashivim/vim-terraform'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install'
   \ }
@@ -70,6 +71,10 @@ set showcmd
 
 " Don't line wrap mid-word.
 set lbr
+
+" No hard wrap
+set wrap
+set textwidth=0 wrapmargin=0
 
 " Open new split panes
 set splitright
