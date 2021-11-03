@@ -9,6 +9,12 @@ pkgs:
   #- i3-scrot
   #- nerd-fonts-roboto-mono
   #- skypeforlinux
+  #- apachedirectorystudio
+  - ntf-3g
+  - gnome-keyring
+  - sshuttle
+  - ranger
+  - inetutils
   - bc
   - transmission-cli
   - linux-headers
