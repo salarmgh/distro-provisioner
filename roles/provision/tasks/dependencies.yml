@@ -52,17 +52,27 @@
     state: present
   become: true
 
+- name: Check if debs installed
+  command: "dpkg -s {{ item.name }}"
+  register: debs_check
+  with_items: "{{ debs }}"
+  ignore_errors: yes
+
+- name: Install debs
+  apt:
+    deb: "{{ item.url }}"
+  with_items: "{{ debs }}"
+  environment:
+    http_proxy: "{{ proxy }}"
+    https_proxy: "{{ proxy }}"
+  become: true
+  when: debs_check.rc == 1
+
 - name: Install firmwares
   apt:
     name: "{{ firmware_pkgs }}"
     state: present
   become: true
-
-- name: Install flatpak packages
-  flatpak:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ flatpak_pkgs }}"
 
 - name: Install npm packages
   npm:

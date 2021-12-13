@@ -1,6 +1,6 @@
 ---
 - name: Install dependencies
-  include_tasks: arch.yml
+  include_tasks: dependencies.yml
 
 - name: Configure
   include_tasks: configure.yml

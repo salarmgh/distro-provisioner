@@ -8,13 +8,6 @@
     mode: "{{ item.perm }}"
   with_items: "{{ copy_files }}"
 
-- name: Configure bashrc
-  lineinfile:
-    path: /home/salarmgh/.bashrc
-    state: present
-    line: |
-      {{ bash_custom_config }}
-
 - name: Download vim plug
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -49,19 +42,4 @@
     name: docker
     state: started
     enabled: yes
-  become: true
-
-- name: Enable bluetooth
-  systemd:
-    name: bluetooth
-    state: started
-    enabled: yes
-  become: true
-
-- name: Configure libinput
-  copy:
-    src: 40-libinput.conf
-    dest: /etc/X11/xorg.conf.d/40-libinput.conf
-    owner: root
-    group: root
   become: true

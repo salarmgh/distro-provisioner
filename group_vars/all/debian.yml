@@ -7,9 +7,19 @@ repos:
     repo_url: deb https://baltocdn.com/helm/stable/debian/ all main
   - repo_key: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
     repo_url: deb https://deb.nodesource.com/node_14.x focal main
+  - repo_key: https://apt.releases.hashicorp.com/gpg
+    repo_url: deb [arch=amd64] https://apt.releases.hashicorp.com impish main
+debs:
+  - https://downloads.slack-edge.com/releases/linux/4.22.0/prod/x64/slack-desktop-4.22.0-amd64.deb
+  #- name: virtualbox-6.1
+  #  url: https://download.virtualbox.org/virtualbox/6.1.26/virtualbox-6.1_6.1.26-145957~Debian~bullseye_amd64.deb
+  #- name: ulauncher
+  #  url: https://github.com/Ulauncher/Ulauncher/releases/download/5.14.0/ulauncher_5.14.0_all.deb
 ppas:
   - ppa:agornostal/ulauncher
-firmware_pkgs: []
-# - firmware-realtek
-# - firmware-iwlwifi
-# - firmware-linux
+firmware_pkgs:
+  []
+  #- firmware-realtek
+  #- firmware-iwlwifi
+  #- firmware-linux
+  #- firmware-sof-signed

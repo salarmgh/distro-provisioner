@@ -1,88 +1,55 @@
 ---
 username: salarmgh
+proxy: http://pxuser:dkdevops@138.201.79.107:9999
 pkgs:
-  #- oh-my-zsh
-  #- maia-icon-theme
-  #- xcursor-maia-git
-  #- maia-gtk-theme
-  #- clipit
-  #- i3-scrot
-  #- nerd-fonts-roboto-mono
-  #- skypeforlinux
-  #- apachedirectorystudio
-  - ntf-3g
-  - gnome-keyring
-  - sshuttle
-  - ranger
-  - inetutils
-  - bc
-  - transmission-cli
-  - linux-headers
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
+  - virtualbox
+  - ulauncher
+  - python3-venv
   - terraform
-  - netcat
-  - slack-desktop
-  - evolution
-  - evolution-ews
-  - sof-firmware
-  - whois
-  - xorg-xkill
-  - cmus
-  - zsh
-  - arandr
-  - base-devel
-  - xautolock
-  - blueman
-  - polkit-gnome
-  - network-manager-applet
-  - xorg-xbacklight
-  - nitrogen
-  - picom
-  - dunst
-  - rxvt-unicode
-  - inter-font
-  - kubectl
-  - helm
-  - elixir
-  - nodejs
-  - npm
-  - pavucontrol
-  - networkmanager-openvpn
-  - networkmanager-openconnect
-  - ttf-opensans
-  - ttf-dejavu
-  - xournalpp
-  - sysstat
-  - dnsutils
-  - fd
-  - ripgrep
-  - tlp
-  - tlp-rdw
-  - zip
-  - htop
-  - cmake
-  - usbutils
-  - dosfstools
-  - jq
-  - iftop
-  - mariadb-clients
-  - curl
-  - openconnect
-  - libreoffice
-  - the_silver_searcher
-  - unrar
-  - xsel
-  - sudo
-  - git
-  - vim
+  - skypeforlinux
+  - wmctrl
+  - vagrant
+  - ntfs-3g 
+  - sshuttle
+  - bc 
+  - transmission
+  - zsh-autosuggestions 
+  - zsh-syntax-highlighting 
+  - netcat 
+  - geary 
+  - whois 
+  - zsh 
+  - elixir 
+  - nodejs 
+  - network-manager-openvpn 
+  - network-manager-openconnect 
+  - sysstat 
+  - dnsutils 
+  - ripgrep 
+  - tlp 
+  - tlp-rdw 
+  - zip 
+  - htop 
+  - cmake 
+  - usbutils 
+  - dosfstools 
+  - jq 
+  - iftop 
+  - mariadb-client 
+  - curl 
+  - openconnect 
+  - libreoffice 
+  - xsel 
+  - sudo 
+  - git 
+  - vim 
   - firefox
-  - tmux
-  - xclip
-  - docker
-  - docker-compose
-  - vlc
-  - axel
+  - tmux 
+  - xclip 
+  - docker.io
+  - docker-compose 
+  - vlc 
+  - axel 
   - unzip
 npm_packages:
   - prettier
@@ -95,10 +62,7 @@ dirs:
   - /home/salarmgh/.kube
   - /home/salarmgh/.vim/autoload
   - /home/salarmgh/.ssh
-  - /home/salarmgh/.config/dunst
-  - /home/salarmgh/.config/nitrogen
   - /home/salarmgh/.config/gtk-3.0
-  - /home/salarmgh/.config/picom
 user_groups:
   - docker
 is_hidpi: true
@@ -118,42 +82,15 @@ copy_files:
   - src: kubeconfig
     dest: /home/salarmgh/.kube/config
     perm: "0600"
-  - src: emacs
-    dest: /home/salarmgh/.emacs
-    perm: "0644"
   - src: gitconfig
     dest: /home/salarmgh/.gitconfig
     perm: "0644"
-  - src: Xresources
-    dest: /home/salarmgh/.Xresources
-    perm: "0644"
-  - src: i3config
-    dest: /home/salarmgh/.config/i3/config
-    perm: "0644"
-  - src: dmenurc
-    dest: /home/salarmgh/.dmenurc
-    perm: "0644"
-  - src: dunstrc
-    dest: /home/salarmgh/.config/dunst/dunstrc
-    perm: "0644"
-  - src: nitrogen.cfg
-    dest: /home/salarmgh/.config/nitrogen/nitrogen.cfg
-    perm: "0644"
-  - src: bg-saved.cfg
-    dest: /home/salarmgh/.config/nitrogen/bg-saved.cfg
-    perm: "0644"
-  - src: wall.jpg
-    dest: /home/salarmgh/Pictures/wall.jpg
-    perm: "0644"
-  - src: gtkrc-2.0
-    dest: /home/salarmgh/.gtkrc-2.0
-    perm: "0644"
-  - src: gtkrc-3.0.ini
-    dest: /home/salarmgh/.config/gtk-3.0
-    perm: "0644"
+  #- src: gtkrc-2.0
+  #  dest: /home/salarmgh/.gtkrc-2.0
+  #  perm: "0644"
+  #- src: gtkrc-3.0.ini
+  #  dest: /home/salarmgh/.config/gtk-3.0
+  #  perm: "0644"
   - src: zshrc
     dest: /home/salarmgh/.zshrc
-    perm: "0644"
-  - src: picom.conf
-    dest: /home/salarmgh/.config/picom/picom.conf
     perm: "0644"
