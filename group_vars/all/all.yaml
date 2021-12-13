@@ -1,6 +1,5 @@
 ---
 username: salarmgh
-proxy: http://pxuser:dkdevops@138.201.79.107:9999
 pkgs:
   - virtualbox
   - ulauncher
